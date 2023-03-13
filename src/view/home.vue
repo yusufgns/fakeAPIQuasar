@@ -64,45 +64,45 @@ const states = reactive({});
             </div>
 
             <div v-if="deneme.data3 !== null" class="flex items-center justify-between w-full bg-gray-500 px-[25px] border-x-gray-500">
-                <div v-if="deneme.data3.inputTitle">{{ deneme.data3.inputTitle }}</div>
-                <div v-if="deneme.data3.inputDes">{{ deneme.data3.inputDes }}</div>
-                <div v-if="deneme.data3.countItem">{{ deneme.data3.countItem }}</div>
+                <div v-if="deneme.data3.inputTitle !== null">{{ deneme.data3.inputTitle }}</div>
+                <div v-if="deneme.data3.inputDes !== null">{{ deneme.data3.inputDes }}</div>
+                <div v-if="deneme.data3.countItem !== null">{{ deneme.data3.countItem }}</div>
                 <div class="bg-gray-500 w-[150px] h-[120px] max-w-[150px] max-h-[120px] flex items-center">
                     <div>
-                        <img v-if="deneme.data3.imageSrc" class="w-[150px] h-[100px] max-w-[150px] max-h-[100px]" :src="deneme.data3.imageSrc">
+                        <img v-if="deneme.data3.imageSrc !== null" class="w-[150px] h-[100px] max-w-[150px] max-h-[100px]" :src="deneme.data3.imageSrc">
                     </div>
                 </div>
             </div>
 
             <div v-if="deneme.data4 !== null" class="flex items-center justify-between w-full bg-gray-500 px-[25px] border-x-gray-500">
-                <div v-if="deneme.data4.inputTitle">{{ deneme.data4.inputTitle }}</div>
-                <div v-if="deneme.data4.inputDes">{{ deneme.data4.inputDes }}</div>
-                <div v-if="deneme.data4.countItem">{{ deneme.data4.countItem }}</div>
+                <div v-if="deneme.data4.inputTitle !== null">{{ deneme.data4.inputTitle }}</div>
+                <div v-if="deneme.data4.inputDes !== null">{{ deneme.data4.inputDes }}</div>
+                <div v-if="deneme.data4.countItem !== null">{{ deneme.data4.countItem }}</div>
                 <div class="bg-gray-500 w-[150px] h-[120px] max-w-[150px] max-h-[120px] flex items-center">
                     <div>
-                        <img v-if="deneme.data4.imageSrc" class="w-[150px] h-[100px] max-w-[150px] max-h-[100px]" :src="deneme.data4.imageSrc">
+                        <img v-if="deneme.data4.imageSrc !== null" class="w-[150px] h-[100px] max-w-[150px] max-h-[100px]" :src="deneme.data4.imageSrc">
                     </div>
                 </div>
             </div>
 
             <div v-if="deneme.data5 !== null" class="flex items-center justify-between w-full bg-gray-500 px-[25px] border-x-gray-500">
-                <div v-if="deneme.data5.inputTitle">{{ deneme.data5.inputTitle }}</div>
-                <div v-if="deneme.data5.inputDes">{{ deneme.data5.inputDes }}</div>
-                <div v-if="deneme.data5.countItem">{{ deneme.data5.countItem }}</div>
+                <div v-if="deneme.data5.inputTitle !== null">{{ deneme.data5.inputTitle }}</div>
+                <div v-if="deneme.data5.inputDes !== null">{{ deneme.data5.inputDes }}</div>
+                <div v-if="deneme.data5.countItem !== null">{{ deneme.data5.countItem }}</div>
                 <div class="bg-gray-500 w-[150px] h-[120px] max-w-[150px] max-h-[120px] flex items-center">
                     <div>
-                        <img v-if="deneme.data5.imageSrc" class="w-[150px] h-[100px] max-w-[150px] max-h-[100px]" :src="deneme.data5.imageSrc">
+                        <img v-if="deneme.data5.imageSrc !== null" class="w-[150px] h-[100px] max-w-[150px] max-h-[100px]" :src="deneme.data5.imageSrc">
                     </div>
                 </div>
             </div>
 
             <div v-if="deneme.data6 !== null" class="flex items-center justify-between w-full bg-gray-500 px-[25px] border-x-gray-500">
-                <div v-if="deneme.data6.inputTitle">{{ deneme.data6.inputTitle }}</div>
-                <div v-if="deneme.data6.inputDes">{{ deneme.data6.inputDes }}</div>
-                <div v-if="deneme.data6.countItem">{{ deneme.data6.countItem }}</div>
+                <div v-if="deneme.data6.inputTitle !== null">{{ deneme.data6.inputTitle }}</div>
+                <div v-if="deneme.data6.inputDes !== null">{{ deneme.data6.inputDes }}</div>
+                <div v-if="deneme.data6.countItem !== null">{{ deneme.data6.countItem }}</div>
                 <div class="bg-gray-500 w-[150px] h-[120px] max-w-[150px] max-h-[120px] flex items-center">
                     <div>
-                        <img v-if="deneme.data6.imageSrc" class="w-[150px] h-[100px] max-w-[150px] max-h-[100px]" :src="deneme.data6.imageSrc">
+                        <img v-if="deneme.data6.imageSrc !== null" class="w-[150px] h-[100px] max-w-[150px] max-h-[100px]" :src="deneme.data6.imageSrc">
                     </div>
                 </div>
             </div>
