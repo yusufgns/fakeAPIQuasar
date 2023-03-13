@@ -8,6 +8,7 @@ import router from "../router/router.js"
 axios.get('http://localhost:3000/myData').then(response => {
     states.value = response.data;
     console.log(response.data)
+    console.log(states)
 })
 
 const odWatch = (e) => {
@@ -27,7 +28,7 @@ const states = reactive({});
 
 <template>
     <headerMenu></headerMenu>
-    <div class="flex justify-between px-[25px] pr-[60px]">
+    <div v-if="states.value.length !== 0" class="flex justify-between px-[25px] pr-[60px]">
         <p>Başlık</p>
         <p>Açıklama</p>
         <p>Hasarlı Parça</p>
@@ -46,7 +47,7 @@ const states = reactive({});
                 <div v-if="deneme.data1.inputDes !== null" >{{ deneme.data1.inputDes }}</div>
                 <div v-if="deneme.data1.countItem !== null" >{{ deneme.data1.countItem }}</div>
                 <div class="bg-gray-500 w-[150px] h-[120px] max-w-[150px] max-h-[120px] flex items-center">
-                    <div>
+                    <div class="w-[150px] h-[100px] max-w-[150px] max-h-[100px] bg-gray-300">
                         <img v-if="deneme.data1.imageSrc !== null" class="w-[150px] h-[100px] max-w-[150px] max-h-[100px]" :src="deneme.data1.imageSrc">
                     </div>
                 </div>
@@ -57,7 +58,7 @@ const states = reactive({});
                 <div v-if="deneme.data2.inputDes !== null">{{ deneme.data2.inputDes }}</div>
                 <div v-if="deneme.data2.countItem !== null">{{ deneme.data2.countItem }}</div>
                 <div class="bg-gray-500 w-[150px] h-[120px] max-w-[150px] max-h-[120px] flex items-center">
-                    <div>
+                    <div class="w-[150px] h-[100px] max-w-[150px] max-h-[100px] bg-gray-300">
                         <img v-if="deneme.data2.imageSrc !== null" class="w-[150px] h-[100px] max-w-[150px] max-h-[100px]" :src="deneme.data2.imageSrc">
                     </div>
                 </div>
@@ -68,7 +69,7 @@ const states = reactive({});
                 <div v-if="deneme.data3.inputDes !== null">{{ deneme.data3.inputDes }}</div>
                 <div v-if="deneme.data3.countItem !== null">{{ deneme.data3.countItem }}</div>
                 <div class="bg-gray-500 w-[150px] h-[120px] max-w-[150px] max-h-[120px] flex items-center">
-                    <div>
+                    <div class="w-[150px] h-[100px] max-w-[150px] max-h-[100px] bg-gray-300">
                         <img v-if="deneme.data3.imageSrc !== null" class="w-[150px] h-[100px] max-w-[150px] max-h-[100px]" :src="deneme.data3.imageSrc">
                     </div>
                 </div>
@@ -79,7 +80,7 @@ const states = reactive({});
                 <div v-if="deneme.data4.inputDes !== null">{{ deneme.data4.inputDes }}</div>
                 <div v-if="deneme.data4.countItem !== null">{{ deneme.data4.countItem }}</div>
                 <div class="bg-gray-500 w-[150px] h-[120px] max-w-[150px] max-h-[120px] flex items-center">
-                    <div>
+                    <div class="w-[150px] h-[100px] max-w-[150px] max-h-[100px] bg-gray-300">
                         <img v-if="deneme.data4.imageSrc !== null" class="w-[150px] h-[100px] max-w-[150px] max-h-[100px]" :src="deneme.data4.imageSrc">
                     </div>
                 </div>
@@ -90,7 +91,7 @@ const states = reactive({});
                 <div v-if="deneme.data5.inputDes !== null">{{ deneme.data5.inputDes }}</div>
                 <div v-if="deneme.data5.countItem !== null">{{ deneme.data5.countItem }}</div>
                 <div class="bg-gray-500 w-[150px] h-[120px] max-w-[150px] max-h-[120px] flex items-center">
-                    <div>
+                    <div class="w-[150px] h-[100px] max-w-[150px] max-h-[100px] bg-gray-300">
                         <img v-if="deneme.data5.imageSrc !== null" class="w-[150px] h-[100px] max-w-[150px] max-h-[100px]" :src="deneme.data5.imageSrc">
                     </div>
                 </div>
@@ -101,7 +102,7 @@ const states = reactive({});
                 <div v-if="deneme.data6.inputDes !== null">{{ deneme.data6.inputDes }}</div>
                 <div v-if="deneme.data6.countItem !== null">{{ deneme.data6.countItem }}</div>
                 <div class="bg-gray-500 w-[150px] h-[120px] max-w-[150px] max-h-[120px] flex items-center">
-                    <div>
+                    <div class="w-[150px] h-[100px] max-w-[150px] max-h-[100px] bg-gray-300">
                         <img v-if="deneme.data6.imageSrc !== null" class="w-[150px] h-[100px] max-w-[150px] max-h-[100px]" :src="deneme.data6.imageSrc">
                     </div>
                 </div>
