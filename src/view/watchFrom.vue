@@ -21,7 +21,7 @@ const states = reactive({});
     <div class="absolute bg-gray-400 py-[5px] px-[10px] rounded-sm top-[50px] left-[50px]" @click="homee">
         HOME
     </div>
-    <div class="w-full items-center justify-center flex bg-[#CCCCCC]">
+    <div class="w-full items-center justify-center flex bg-[#CCCCCC] py-[35px]">
         <div v-for="state in states" class="w-[21cm] h-[29.7cm] bg-white">
             <p class="bg-gray-200 py-[5px] text-center font-bold">{{ state.inputTitle }}</p>
 
