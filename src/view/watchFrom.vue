@@ -1,6 +1,5 @@
 <script setup>
 import { reactive } from 'vue';
-import headerMenu from '../components/headerMenu.vue';
 import axios from "axios";
 import router from '../router/router';
 

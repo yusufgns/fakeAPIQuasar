@@ -33,11 +33,6 @@ const states = reactive({});
         <p class="ml-[950px]">Hasarlı Parça</p>
         <p></p>
     </div>
-
-    <div v-if="states.value.length == 0">
-        New Item dediğinizde size zorunlu olarak inputlara ekleme yapmanızı istiyen bir sistem oluşturdum. <br>
-        Bu sistem sayesinde 6 adet data girme zorunluluğu getirdim. Tek zorunlu olarak istenmiyen data image.
-    </div>
     <div v-for="(state, index) in states">
         <div v-for="deneme in state">
             <div class="flex items-center w-full px-[25px] bg-gray-400 border-b-[2px]">
