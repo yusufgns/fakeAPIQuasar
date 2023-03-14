@@ -5,38 +5,34 @@ import axios from "axios";
 import router from "../router/router";
 
 const fullData = reactive({
+    count: null,
+    inputTitle: null,
     data1: {
-        inputTitle: null,
         inputDes: null,
         countItem: null,
         imageSrc: null,
     },
     data2: {
-        inputTitle: null,
         inputDes: null,
         countItem: null,
         imageSrc: null,
     },
     data3: {
-        inputTitle: null,
         inputDes: null,
         countItem: null,
         imageSrc: null,
     },
     data4: {
-        inputTitle: null,
         inputDes: null,
         countItem: null,
         imageSrc: null,
     },
     data5: {
-        inputTitle: null,
         inputDes: null,
         countItem: null,
         imageSrc: null,
     },
     data6: {
-        inputTitle: null,
         inputDes: null,
         countItem: null,
         imageSrc: null,
@@ -44,20 +40,34 @@ const fullData = reactive({
 })
 
 const errorData = reactive({
-    error : null
+    error: null
 })
 
 function submitForm(e) {
-    console.log(e)
-    if (fullData.data1.inputTitle == null || fullData.data2.inputTitle == null || fullData.data3.inputTitle == null || fullData.data4.inputTitle == null || fullData.data5.inputTitle == null || fullData.data6.inputTitle == null) {
-        errorData.error = "Başlıklar içerisinde en az 1 karakter olmalıdır, Örnek : B"
+    /* console.log(e)
+    if (fullData.data1.imageSrc == null || fullData.data2.imageSrc == null || fullData.data3.imageSrc == null || fullData.data4.imageSrc == null || fullData.data5.imageSrc == null || fullData.data6.imageSrc == null) {
+        errorData.error = "İmage yüklemek zorunludur"
         console.log("error1")
     } else if (fullData.data1.inputDes == null || fullData.data2.inputDes == null || fullData.data3.inputDes == null || fullData.data4.inputDes == null || fullData.data5.inputDes == null || fullData.data6.inputDes == null) {
-        errorData.error = "Açıklama içerisinde en az 1 karakter olmalıdır, Örnek : B"
+        errorData.error = "Açıklama yazmak zorunludur"
         console.log("error2")
-    } else if (fullData.data1.countItem == null || fullData.data2.countItem == null || fullData.data3.countItem == null || fullData.data4.countItem == null || fullData.data5.countItem == null || fullData.data6.countItem == null) {
-        errorData.error = "Count içerisinde en az 1 sayı olmalıdır, Örnek : 0"
-        console.log("error3")
+    }
+    else {
+        axios.post('http://localhost:3000/myData', fullData)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        router.push("/")
+    } */
+    if (fullData.inputTitle == null) {
+        errorData.error = "Başlık Olmak Zorunda!"
+        console.log("errorrrrrrr")
+    } else if (fullData.data1.imageSrc == null || fullData.data1.inputDes == null) {
+        errorData.error = "1. input dolu olmak zorundadır!"
+        console.log("errorrrrrrr")
     } else {
         axios.post('http://localhost:3000/myData', fullData)
             .then(response => {
@@ -80,7 +90,6 @@ const uploadImage = (e, dataKey) => {
 }
 
 const onReset = (event, dataKey) => {
-    fullData[dataKey].inputTitle = "";
     fullData[dataKey].inputDes = "";
     fullData[dataKey].countItem = "";
     fullData[dataKey].imageSrc = null;
@@ -94,185 +103,167 @@ const onReset = (event, dataKey) => {
     <div class="flex items-center justify-center">
         <div class="q-pa-md mb-[150px]">
             <q-form @submit="submitForm" class="flex gap-32 flex-wrap max-w-[1500px] justify-center">
-                <div class="q-gutter-y-md column" style="max-width: 300px">
-                    <q-form @reset="onReset(event, 'data1')" class="q-gutter-md">
+                <div class="flex flex-col">
+                    <q-input standout v-model="fullData.inputTitle" :max-length="50" :dense="dense"
+                        label="Lütfen başlık giriniz" lazy-rules />
 
-                        <div>
-                            <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
-                                <img class="w-[300px] h-[200px]" v-if="fullData.data1.imageSrc"
-                                    :src="fullData.data1.imageSrc" />
-                            </div>
-                            <input class="mt-[5px]" type="file" accept="image/*" @change="e => uploadImage(e, 'data1')">
-                        </div>
-
-                        <q-input standout v-model="fullData.data1.inputTitle" :max-length="50" :dense="dense"
-                            label="Lütfen başlık giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen başlık giriniz'
-                            ]" />
-                        <q-input v-model="fullData.data1.inputDes" filled type="textarea" :max-length="230"
-                            label="Lütfen açıklama giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
-                            ]" />
-
-                        <q-input filled type="number" v-model="fullData.data1.countItem"
-                            label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
-                            ]" />
-
-                        <div>
-                            <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
-                        </div>
-                    </q-form>
+                    <div class="bg-gray-300 py-[10px] px-[25px] rounded-[10px] mt-[15px]">
+                        <p>İmage yüklemek ve açıklama girmek zorunludur. Aksi taktirde datanız yüklenemez.</p>
+                        <p>6 dan daha az data göndermek isterseniz istek dışındakileri boş bırakınız</p>
+                        <p>1 adet input göndermek isterseniz 1. (sol, ilk sıra) input doldurulmalıdır.</p>
+                    </div>
                 </div>
+                <div class="flex gap-32 flex-wrap max-w-[1500px] justify-center">
+                    <div class="q-gutter-y-md column" style="max-width: 300px">
+                        <q-form @reset="onReset(event, 'data1')" class="q-gutter-md">
 
-                <div class="q-gutter-y-md column" style="max-width: 300px">
-                    <q-form @reset="onReset(event, 'data2')" class="q-gutter-md">
-
-                        <div>
-                            <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
-                                <img class="w-[300px] h-[200px]" v-if="fullData.data2.imageSrc"
-                                    :src="fullData.data2.imageSrc" />
+                            <div>
+                                <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
+                                    <img class="w-[300px] h-[200px]" v-if="fullData.data1.imageSrc"
+                                        :src="fullData.data1.imageSrc" />
+                                </div>
+                                <input class="mt-[5px]" type="file" accept="image/*" @change="e => uploadImage(e, 'data1')">
                             </div>
-                            <input class="mt-[5px]" type="file" accept="image/*" @change="e => uploadImage(e, 'data2')">
-                        </div>
+                            <q-input v-model="fullData.data1.inputDes" filled type="textarea" :max-length="230"
+                                label="Lütfen açıklama giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
+                                ]" />
 
-                        <q-input standout v-model="fullData.data2.inputTitle" :dense="dense" :max-length="50"
-                            label="Lütfen başlık giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen başlık giriniz'
-                            ]" />
-                        <q-input v-model="fullData.data2.inputDes" filled type="textarea" :max-length="230"
-                            label="Lütfen açıklama giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
-                            ]" />
-                        <q-input filled type="number" v-model="fullData.data2.countItem"
-                            label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
-                            ]" />
+                            <q-input filled type="number" v-model="fullData.data1.countItem"
+                                label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
+                                ]" />
 
-                        <div>
-                            <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
-                        </div>
-                    </q-form>
-                </div>
-
-                <div class="q-gutter-y-md column" style="max-width: 300px">
-                    <q-form @reset="onReset(event, 'data3')" class="q-gutter-md">
-
-                        <div>
-                            <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
-                                <img class="w-[300px] h-[200px]" v-if="fullData.data3.imageSrc"
-                                    :src="fullData.data3.imageSrc" />
+                            <div>
+                                <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
                             </div>
-                            <input class="mt-[5px]" type="file" accept="image/*" @change="e => uploadImage(e, 'data3')">
-                        </div>
+                        </q-form>
+                    </div>
 
-                        <q-input standout v-model="fullData.data3.inputTitle" :dense="dense" :max-length="50"
-                            label="Lütfen başlık giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen başlık giriniz'
-                            ]" />
-                        <q-input v-model="fullData.data3.inputDes" filled type="textarea" :max-length="230"
-                            label="Lütfen açıklama giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
-                            ]" />
-                        <q-input filled type="number" v-model="fullData.data3.countItem"
-                            label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
-                            ]" />
+                    <div class="q-gutter-y-md column" style="max-width: 300px">
+                        <q-form @reset="onReset(event, 'data2')" class="q-gutter-md">
 
-                        <div>
-                            <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
-                        </div>
-                    </q-form>
-                </div>
-
-                <div class="q-gutter-y-md column" style="max-width: 300px">
-                    <q-form @reset="onReset(event, 'data4')" class="q-gutter-md">
-
-                        <div>
-                            <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
-                                <img class="w-[300px] h-[200px]" v-if="fullData.data4.imageSrc"
-                                    :src="fullData.data4.imageSrc" />
+                            <div>
+                                <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
+                                    <img class="w-[300px] h-[200px]" v-if="fullData.data2.imageSrc"
+                                        :src="fullData.data2.imageSrc" />
+                                </div>
+                                <input class="mt-[5px]" type="file" accept="image/*" @change="e => uploadImage(e, 'data2')">
                             </div>
-                            <input class="mt-[5px]" type="file" accept="image/*" @change="e => uploadImage(e, 'data4')">
-                        </div>
+                            <q-input v-model="fullData.data2.inputDes" filled type="textarea" :max-length="230"
+                                label="Lütfen açıklama giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
+                                ]" />
+                            <q-input filled type="number" v-model="fullData.data2.countItem"
+                                label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
+                                ]" />
 
-                        <q-input standout v-model="fullData.data4.inputTitle" :dense="dense" :max-length="50"
-                            label="Lütfen başlık giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen başlık giriniz'
-                            ]" />
-                        <q-input v-model="fullData.data4.inputDes" filled type="textarea" :max-length="230"
-                            label="Lütfen açıklama giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
-                            ]" />
-                        <q-input filled type="number" v-model="fullData.data4.countItem"
-                            label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
-                            ]" />
-
-                        <div>
-                            <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
-                        </div>
-                    </q-form>
-                </div>
-
-                <div class="q-gutter-y-md column" style="max-width: 300px">
-                    <q-form @reset="onReset(event, 'data5')" class="q-gutter-md">
-
-                        <div>
-                            <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
-                                <img class="w-[300px] h-[200px]" v-if="fullData.data5.imageSrc"
-                                    :src="fullData.data5.imageSrc" />
+                            <div>
+                                <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
                             </div>
-                            <input class="mt-[5px]" type="file" accept="image/*" @change="e => uploadImage(e, 'data5')">
-                        </div>
+                        </q-form>
+                    </div>
 
-                        <q-input standout v-model="fullData.data5.inputTitle" :dense="dense" :max-length="50"
-                            label="Lütfen başlık giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen başlık giriniz'
-                            ]" />
-                        <q-input v-model="fullData.data5.inputDes" filled type="textarea" :max-length="230"
-                            label="Lütfen açıklama giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
-                            ]" />
-                        <q-input filled type="number" v-model="fullData.data5.countItem"
-                            label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
-                            ]" />
+                    <div class="q-gutter-y-md column" style="max-width: 300px">
+                        <q-form @reset="onReset(event, 'data3')" class="q-gutter-md">
 
-                        <div>
-                            <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
-                        </div>
-                    </q-form>
-                </div>
-
-                <div class="q-gutter-y-md column" style="max-width: 300px">
-                    <q-form @reset="onReset(event, 'data6')" class="q-gutter-md">
-
-                        <div>
-                            <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
-                                <img class="w-[300px] h-[200px]" v-if="fullData.data6.imageSrc"
-                                    :src="fullData.data6.imageSrc" />
+                            <div>
+                                <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
+                                    <img class="w-[300px] h-[200px]" v-if="fullData.data3.imageSrc"
+                                        :src="fullData.data3.imageSrc" />
+                                </div>
+                                <input class="mt-[5px]" type="file" accept="image/*" @change="e => uploadImage(e, 'data3')">
                             </div>
-                            <input class="mt-[5px]" type="file" accept="image/*" @change="e => uploadImage(e, 'data6')">
-                        </div>
+                            <q-input v-model="fullData.data3.inputDes" filled type="textarea" :max-length="230"
+                                label="Lütfen açıklama giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
+                                ]" />
+                            <q-input filled type="number" v-model="fullData.data3.countItem"
+                                label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
+                                ]" />
 
-                        <q-input standout v-model="fullData.data6.inputTitle" :dense="dense" :max-length="50"
-                            label="Lütfen başlık giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen başlık giriniz'
-                            ]" />
-                        <q-input v-model="fullData.data6.inputDes" filled type="textarea" :max-length="230"
-                            label="Lütfen açıklama giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
-                            ]" />
-                        <q-input filled type="number" v-model="fullData.data6.countItem"
-                            label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
-                                val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
-                            ]" />
+                            <div>
+                                <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
+                            </div>
+                        </q-form>
+                    </div>
 
-                        <div>
-                            <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
-                        </div>
-                    </q-form>
+                    <div class="q-gutter-y-md column" style="max-width: 300px">
+                        <q-form @reset="onReset(event, 'data4')" class="q-gutter-md">
+
+                            <div>
+                                <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
+                                    <img class="w-[300px] h-[200px]" v-if="fullData.data4.imageSrc"
+                                        :src="fullData.data4.imageSrc" />
+                                </div>
+                                <input class="mt-[5px]" type="file" accept="image/*" @change="e => uploadImage(e, 'data4')">
+                            </div>
+                            <q-input v-model="fullData.data4.inputDes" filled type="textarea" :max-length="230"
+                                label="Lütfen açıklama giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
+                                ]" />
+                            <q-input filled type="number" v-model="fullData.data4.countItem"
+                                label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
+                                ]" />
+
+                            <div>
+                                <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
+                            </div>
+                        </q-form>
+                    </div>
+
+                    <div class="q-gutter-y-md column" style="max-width: 300px">
+                        <q-form @reset="onReset(event, 'data5')" class="q-gutter-md">
+
+                            <div>
+                                <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
+                                    <img class="w-[300px] h-[200px]" v-if="fullData.data5.imageSrc"
+                                        :src="fullData.data5.imageSrc" />
+                                </div>
+                                <input class="mt-[5px]" type="file" accept="image/*" @change="e => uploadImage(e, 'data5')">
+                            </div>
+                            <q-input v-model="fullData.data5.inputDes" filled type="textarea" :max-length="230"
+                                label="Lütfen açıklama giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
+                                ]" />
+                            <q-input filled type="number" v-model="fullData.data5.countItem"
+                                label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
+                                ]" />
+
+                            <div>
+                                <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
+                            </div>
+                        </q-form>
+                    </div>
+
+                    <div class="q-gutter-y-md column" style="max-width: 300px">
+                        <q-form @reset="onReset(event, 'data6')" class="q-gutter-md">
+
+                            <div>
+                                <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
+                                    <img class="w-[300px] h-[200px]" v-if="fullData.data6.imageSrc"
+                                        :src="fullData.data6.imageSrc" />
+                                </div>
+                                <input class="mt-[5px]" type="file" accept="image/*" @change="e => uploadImage(e, 'data6')">
+                            </div>
+                            <q-input v-model="fullData.data6.inputDes" filled type="textarea" :max-length="230"
+                                label="Lütfen açıklama giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
+                                ]" />
+                            <q-input filled type="number" v-model="fullData.data6.countItem"
+                                label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
+                                ]" />
+
+                            <div>
+                                <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
+                            </div>
+                        </q-form>
+                    </div>
                 </div>
 
                 <div class="absolute bottom-[-70px]">
