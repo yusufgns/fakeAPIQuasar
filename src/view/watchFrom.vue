@@ -26,90 +26,90 @@ const states = reactive({});
             <p class="bg-gray-200 py-[5px] mx-[9px] border-[5px] border-black text-center font-bold">{{ state.inputTitle }}
             </p>
 
-            <div class="flex items-center justify-center">
-                <div class="border-[5px] border-black border-r-[3px]">
-                    <div class="bg-red-300 w-[380px] h-[300px]">
-                        <img class="max-w-[380px] max-h-[300px]" v-if="state.data1.imageSrc !== null"
+            <div class="watchMainDiv">
+                <div class="watchRborder">
+                    <div class="watchIMG">
+                        <img class="imgWH" v-if="state.data1.imageSrc !== null"
                             :src="state.data1.imageSrc">
                     </div>
 
-                    <div class="flex bg-gray-100 border-black border-y-[2px] w-full h-[32px]">
-                        <p v-if="state.data1.inputDes !== null">{{
+                    <div class=" watchText w-[380px] w-max-[380px] h-[45px]">
+                        <p class="textS" v-if="state.data1.inputDes !== null">{{
                             state.data1.inputDes }}</p>
-                        <p class=" text-red-600 font-bold" v-if="state.data1.countItem !== null">: {{
+                        <p class="textSX textRed" v-if="state.data1.countItem !== null">: {{
                             state.data1.countItem }}</p>
                     </div>
-                    <div class="w-full h-[20px] bg-gray-500"></div>
+                    <div class="watchWfull"></div>
                 </div>
 
-                <div class="border-[5px] border-black border-l-[3px]">
-                    <div class="bg-red-300 w-[380px] h-[300px]">
-                        <img class="max-w-[380px] max-h-[300px]" v-if="state.data2.imageSrc !== null"
+                <div class="watchLborder">
+                    <div class="watchIMG">
+                        <img class="imgWH" v-if="state.data2.imageSrc !== null"
                             :src="state.data2.imageSrc">
                     </div>
-                    <div class="flex bg-gray-100 border-black border-y-[2px] w-full h-[32px]">
-                        <p v-if="state.data2.inputDes !== null">{{
+                    <div class=" watchText h-[45px]">
+                        <p class="textS" v-if="state.data2.inputDes !== null">{{
                             state.data2.inputDes }}</p>
-                        <p class=" text-red-600 font-bold" v-if="state.data2.countItem !== null">: {{
+                        <p class="textSX textRed" v-if="state.data2.countItem !== null">: {{
                             state.data2.countItem }}</p>
                     </div>
-                    <div class="w-full h-[20px] bg-gray-500"></div>
+                    <div class="watchWfull"></div>
                 </div>
             </div>
 
-            <div class="flex items-center justify-center">
-                <div class="border-[5px] border-black border-r-[3px]">
-                    <div class="bg-red-300 w-[380px] h-[300px]">
-                        <img class="max-w-[380px] max-h-[300px]" v-if="state.data3.imageSrc !== null"
+            <div class="watchMainDiv">
+                <div class="watchRborder">
+                    <div class="watchIMG">
+                        <img class="imgWH" v-if="state.data3.imageSrc !== null"
                             :src="state.data3.imageSrc">
                     </div>
-                    <div class="flex bg-gray-100 border-black border-y-[2px] w-full h-[32px]">
-                        <p v-if="state.data3.inputDes !== null">{{
+                    <div class=" watchText h-[45px]">
+                        <p class="textS" v-if="state.data3.inputDes !== null">{{
                             state.data3.inputDes }}</p>
-                        <p class=" text-red-600 font-bold" v-if="state.data3.countItem !== null">: {{
+                        <p class="textSX textRed" v-if="state.data3.countItem !== null">: {{
                             state.data3.countItem }}</p>
                     </div>
-                    <div class="w-full h-[20px] bg-gray-500"></div>
+                    <div class="watchWfull"></div>
                 </div>
 
-                <div class="border-[5px] border-black border-l-[3px]">
-                    <div class="bg-red-300 w-[380px] h-[300px]">
-                        <img class="max-w-[380px] max-h-[300px]" v-if="state.data4.imageSrc !== null"
+                <div class="watchLborder">
+                    <div class="watchIMG">
+                        <img class="imgWH" v-if="state.data4.imageSrc !== null"
                             :src="state.data4.imageSrc">
                     </div>
-                    <div class="flex bg-gray-100 border-black border-y-[2px] w-full h-[32px]">
-                        <p v-if="state.data4.inputDes !== null">{{
+                    <div class=" watchText h-[45px]">
+                        <p class="textS" v-if="state.data4.inputDes !== null">{{
                             state.data4.inputDes }}</p>
-                        <p class=" text-red-600 font-bold" v-if="state.data4.countItem !== null">: {{
+                        <p class="textSX textRed" v-if="state.data4.countItem !== null">: {{
                             state.data4.countItem }}</p>
                     </div>
-                    <div class="w-full h-[20px] bg-gray-500"></div>
+                    <div class="watchWfull"></div>
                 </div>
             </div>
 
-            <div class="flex items-center justify-center">
-                <div class="border-[5px] border-black border-r-[3px]">
-                    <div class="bg-red-300 w-[380px] h-[300px]">
-                        <img class="max-w-[380px] max-h-[300px]" v-if="state.data5.imageSrc !== null"
+            <div class="watchMainDiv">
+                <div class="watchRborder">
+                    <div class="watchIMG">
+                        <img class="imgWH" v-if="state.data5.imageSrc !== null"
                             :src="state.data5.imageSrc">
                     </div>
-                    <div class="flex bg-gray-100 border-black border-y-[2px] w-full h-[32px]">
-                        <p v-if="state.data5.inputDes !== null">{{
+                    <div class="watchText h-[45px]">
+                        <p class="textS" v-if="state.data5.inputDes !== null">{{
                             state.data5.inputDes }}</p>
-                        <p class=" text-red-600 font-bold" v-if="state.data5.countItem !== null">: {{
+                        <p class="textSX textRed" v-if="state.data5.countItem !== null">: {{
                             state.data5.countItem }}</p>
                 </div>
             </div>
 
-            <div class="border-[5px] border-black border-l-[3px]">
-                <div class="bg-red-300 w-[380px] h-[300px]">
-                    <img class="max-w-[380px] max-h-[300px]" v-if="state.data6.imageSrc !== null"
+            <div class="watchLborder">
+                <div class="watchIMG">
+                    <img class="imgWH" v-if="state.data6.imageSrc !== null"
                             :src="state.data6.imageSrc">
                     </div>
-                    <div class="flex bg-gray-100 border-black border-y-[2px] w-full h-[32px]">
-                        <p v-if="state.data6.inputDes !== null">{{
+                    <div class=" watchText h-[45px]">
+                        <p class="textS" v-if="state.data6.inputDes !== null">{{
                             state.data6.inputDes }}</p>
-                        <p class=" text-red-600 font-bold" v-if="state.data6.countItem !== null">: {{
+                        <p class="textSX textRed" v-if="state.data6.countItem !== null">: {{
                             state.data6.countItem }}</p>
                     </div>
                 </div>
@@ -120,12 +120,24 @@ const states = reactive({});
 
 <style scoped>
 .textS {
-    display: block;
-    width: 380px;
     flex-wrap: wrap;
+    word-break: break-all;
+}
+
+.imgWH {
+    max-height: 300px;
+    max-width: 380px;
+}
+
+.textRed {
+    color: red;
+    font-weight: bold;
+}
+
+.textSX {
+    display: block;
+    width: 55px;
     line-height: 13.5px;
     word-break: break-all;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 </style>

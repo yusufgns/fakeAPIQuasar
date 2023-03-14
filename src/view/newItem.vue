@@ -102,7 +102,7 @@ const onReset = (event, dataKey) => {
     <hearMenu></hearMenu>
     <div class="flex items-center justify-center">
         <div class="q-pa-md mb-[150px]">
-            <q-form @submit="submitForm" class="flex gap-32 flex-wrap max-w-[1500px] justify-center">
+            <q-form @submit="submitForm" class="divAndForm">
                 <div class="flex flex-col">
                     <q-input standout v-model="fullData.inputTitle" :max-length="50" :dense="dense"
                         label="Lütfen başlık giriniz" lazy-rules />
@@ -113,12 +113,12 @@ const onReset = (event, dataKey) => {
                         <p>1 adet input göndermek isterseniz 1. (sol, ilk sıra) input doldurulmalıdır.</p>
                     </div>
                 </div>
-                <div class="flex gap-32 flex-wrap max-w-[1500px] justify-center">
+                <div class="divAndForm">
                     <div class="q-gutter-y-md column" style="max-width: 300px">
                         <q-form @reset="onReset(event, 'data1')" class="q-gutter-md">
 
                             <div>
-                                <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
+                                <div class="itemIMG">
                                     <img class="w-[300px] h-[200px]" v-if="fullData.data1.imageSrc"
                                         :src="fullData.data1.imageSrc" />
                                 </div>
@@ -128,7 +128,6 @@ const onReset = (event, dataKey) => {
                                 label="Lütfen açıklama giriniz" lazy-rules :rules="[
                                     val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
                                 ]" />
-
                             <q-input filled type="number" v-model="fullData.data1.countItem"
                                 label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
                                     val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
@@ -144,7 +143,7 @@ const onReset = (event, dataKey) => {
                         <q-form @reset="onReset(event, 'data2')" class="q-gutter-md">
 
                             <div>
-                                <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
+                                <div class="itemIMG">
                                     <img class="w-[300px] h-[200px]" v-if="fullData.data2.imageSrc"
                                         :src="fullData.data2.imageSrc" />
                                 </div>
@@ -169,7 +168,7 @@ const onReset = (event, dataKey) => {
                         <q-form @reset="onReset(event, 'data3')" class="q-gutter-md">
 
                             <div>
-                                <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
+                                <div class="itemIMG">
                                     <img class="w-[300px] h-[200px]" v-if="fullData.data3.imageSrc"
                                         :src="fullData.data3.imageSrc" />
                                 </div>
@@ -194,7 +193,7 @@ const onReset = (event, dataKey) => {
                         <q-form @reset="onReset(event, 'data4')" class="q-gutter-md">
 
                             <div>
-                                <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
+                                <div class="itemIMG">
                                     <img class="w-[300px] h-[200px]" v-if="fullData.data4.imageSrc"
                                         :src="fullData.data4.imageSrc" />
                                 </div>
@@ -219,7 +218,7 @@ const onReset = (event, dataKey) => {
                         <q-form @reset="onReset(event, 'data5')" class="q-gutter-md">
 
                             <div>
-                                <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
+                                <div class="itemIMG">
                                     <img class="w-[300px] h-[200px]" v-if="fullData.data5.imageSrc"
                                         :src="fullData.data5.imageSrc" />
                                 </div>
@@ -244,7 +243,7 @@ const onReset = (event, dataKey) => {
                         <q-form @reset="onReset(event, 'data6')" class="q-gutter-md">
 
                             <div>
-                                <div class="max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400">
+                                <div class="itemIMG">
                                     <img class="w-[300px] h-[200px]" v-if="fullData.data6.imageSrc"
                                         :src="fullData.data6.imageSrc" />
                                 </div>

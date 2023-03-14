@@ -1,3 +1,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .itemIMG {
+        @apply max-w-[300px] max-h-[300px] w-[300px] h-[200px] bg-red-400
+    }
+
+    .divAndForm {
+        @apply flex gap-32 flex-wrap max-w-[1500px] justify-center
+    }
+
+    .watchText {
+        @apply flex bg-gray-100 border-black border-y-[2px] w-full h-[32px]
+    }
+
+    .watchMainDiv {
+        @apply flex items-center justify-center
+    }
+
+    .watchLborder {
+        @apply border-[5px] border-black border-l-[3px]
+    }
+
+    .watchRborder {
+        @apply border-[5px] border-black border-r-[3px]
+    }
+
+    .watchIMG {
+        @apply bg-gray-50 w-[380px] h-[280px]
+    }
+
+    .watchWfull {
+        @apply w-full h-[20px] bg-gray-500
+    }
+
+    .homeIMG {
+        @apply w-[150px] h-[100px] max-w-[150px] max-h-[100px]
+    }
+
+    .homeMıdIMG {
+        @apply bg-gray-500 w-[150px] h-[120px] max-w-[150px] max-h-[120px]
+    }
+
+    .homeCountText {
+       @apply left-0 w-[150px] max-w-[150px]
+    }
+
+    .homeMainDiv {
+       @apply flex items-center justify-between w-full bg-gray-500 px-[25px] border-x-gray-500
+    }
+}
