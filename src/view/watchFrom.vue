@@ -47,7 +47,7 @@ const states = reactive({});
                         <img class="imgWH" v-if="state.data2.imageSrc !== null"
                             :src="state.data2.imageSrc">
                     </div>
-                    <div class=" watchText h-[45px]">
+                    <div class=" watchText h-[45px] w-[380px]">
                         <p class="textS" v-if="state.data2.inputDes !== null">{{
                             state.data2.inputDes }}</p>
                         <p class="textSX textRed" v-if="state.data2.countItem !== null">: {{
@@ -63,7 +63,7 @@ const states = reactive({});
                         <img class="imgWH" v-if="state.data3.imageSrc !== null"
                             :src="state.data3.imageSrc">
                     </div>
-                    <div class=" watchText h-[45px]">
+                    <div class=" watchText h-[45px] w-[380px]">
                         <p class="textS" v-if="state.data3.inputDes !== null">{{
                             state.data3.inputDes }}</p>
                         <p class="textSX textRed" v-if="state.data3.countItem !== null">: {{
@@ -77,7 +77,7 @@ const states = reactive({});
                         <img class="imgWH" v-if="state.data4.imageSrc !== null"
                             :src="state.data4.imageSrc">
                     </div>
-                    <div class=" watchText h-[45px]">
+                    <div class=" watchText h-[45px] w-[380px]">
                         <p class="textS" v-if="state.data4.inputDes !== null">{{
                             state.data4.inputDes }}</p>
                         <p class="textSX textRed" v-if="state.data4.countItem !== null">: {{
@@ -93,7 +93,7 @@ const states = reactive({});
                         <img class="imgWH" v-if="state.data5.imageSrc !== null"
                             :src="state.data5.imageSrc">
                     </div>
-                    <div class="watchText h-[45px]">
+                    <div class="watchText h-[45px] w-[380px]">
                         <p class="textS" v-if="state.data5.inputDes !== null">{{
                             state.data5.inputDes }}</p>
                         <p class="textSX textRed" v-if="state.data5.countItem !== null">: {{
@@ -106,7 +106,7 @@ const states = reactive({});
                     <img class="imgWH" v-if="state.data6.imageSrc !== null"
                             :src="state.data6.imageSrc">
                     </div>
-                    <div class=" watchText h-[45px]">
+                    <div class=" watchText w-[380px] h-[45px]">
                         <p class="textS" v-if="state.data6.inputDes !== null">{{
                             state.data6.inputDes }}</p>
                         <p class="textSX textRed" v-if="state.data6.countItem !== null">: {{
@@ -122,10 +122,12 @@ const states = reactive({});
 .textS {
     flex-wrap: wrap;
     word-break: break-all;
+    width: 340px;
+    max-width: 340px;
 }
 
 .imgWH {
-    max-height: 300px;
+    max-height: 280px;
     max-width: 380px;
 }
 
