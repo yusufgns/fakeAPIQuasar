@@ -101,7 +101,7 @@ const myData = reactive({
 
 onMounted(async () => {
     const response = await axios.get('http://localhost:3000/myData');
-    myData.dataArrays = Object.values(response.data);
+    myData.dataArrays = Object.values(response.data).reverse();
 });
 
 const goToAdd = () => {
