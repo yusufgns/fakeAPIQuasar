@@ -1,15 +1,24 @@
 <template>
     <div class="flex">
-        <div class="w-[40%] break-words relative">
-            <div class="bg-red-600 h-[25px] flex fixed w-[40%] items-center justify-center z-[999]">
-                <p @click="goToList">Liste</p>
+        <div class="w-[40%] break-words relative ">
+            <div class="bg-gray-100 h-[40px] flex fixed w-[40%] items-center justify-center z-[999]">
+                <p @click="goToList" class="bg-gray-300 py-[1px] px-[10px] rounded-[10px] text-[20px]">Liste</p>
             </div>
 
-            <div class="pt-[25px] w-full h-screen flex justify-center bg-blue-200">
+            <div class="pt-[45px] w-full h-[100vh] flex justify-center">
                 <div>
                     <div class="q-gutter-y-md column" style="max-width: 300px">
+
+                        <div class="h-[56px]">
+                            <q-input v-if="fullData.inputTitle == null" v-model="compData.inputTitle" filled type="text"
+                                label="Lütfen Başlık Giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen Başlık Giriniz'
+                                ]" />
+                        </div>
+
                         <!--Data1-->
-                        <q-form v-if="showData1" @reset="onReset(e, 'data1')" class="q-gutter-md flex flex-col">
+                        <q-form v-if="fullData.data1.imageSrc == null" @reset="onReset(e, 'data1')"
+                            class="q-gutter-md flex flex-col">
                             Liste 1/6
                             <div>
                                 <label class=" mt-[50px]">
@@ -286,8 +295,8 @@
 
 
         </div>
-        <div class="w-[60%] fixed right-0">
-            <watchList></watchList>
+        <div class="w-[60%] h-full fixed right-0 bg-red-400">
+            asdasddas
         </div>
     </div>
 </template>
@@ -309,14 +318,10 @@
 <script setup>
 import watchList from '../components/watchList.vue';
 import router from '../router/router';
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import axios from 'axios';
 
 const val = ref(true)
-
-const goToAddList = () => {
-
-}
 
 const showData1 = ref(true)
 const showData2 = ref(false)
@@ -327,7 +332,10 @@ const showData6 = ref(false)
 const showPushData = ref(false)
 
 const showInput = () => {
-    if (fullData.data2.imageSrc == null) {
+    if (fullData.data1.imageSrc == null) {
+        showData1.value = true,
+            showData2.value = false
+    } else if (fullData.data2.imageSrc == null) {
         showData1.value = false,
             showData2.value = true
     } else if (fullData.data3.imageSrc == null) {
@@ -383,14 +391,16 @@ const fullData = reactive({
 })
 
 const pushFetchData = () => {
-    axios.post('http://localhost:3000/myData', fullData)
-        .then(response => {
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-    router.push("/")
+    if (fullData.data1.imageSrc !== null) {
+        axios.post('http://localhost:3000/myData', fullData)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        router.push("/")
+    }
 }
 
 const goToList = () => {
@@ -400,6 +410,7 @@ const goToList = () => {
 const fileName = ref("")
 
 const compData = reactive({
+    inputTitle: null,
     data1: {
         imageSrc: null,
         inputDes: null,
@@ -446,6 +457,7 @@ const onSubmit = async (e, dataKey) => {
     fullData[dataKey].inputDes = compData[dataKey].inputDes;
     fullData[dataKey].inputCount = compData[dataKey].inputCount;
     fullData[dataKey].imageSrc = compData[dataKey].imageSrc;
+    fullData.inputTitle = compData.inputTitle
 
     compData[dataKey].imageSrc = null
     compData[dataKey].inputCount = null
@@ -459,5 +471,4 @@ const onReset = (e, dataKey) => {
     fullData[dataKey].imageSrc = null
     fileName.value = ""
 }
-
 </script>

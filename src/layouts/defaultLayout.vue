@@ -1,11 +1,11 @@
 <template>
     <div class="flex">
         <div class="w-[40%] break-words relative">
-            <div class="bg-red-600 h-[25px] flex fixed w-[40%] items-center justify-center">
-                <p @click="goToAdd">+ Ekle</p>
+            <div class="bg-gray-100 h-[40px] flex fixed w-[40%] items-center justify-center z-[999]">
+                    <p @click="goToAdd" class="bg-gray-300 py-[1px] px-[10px] rounded-[10px] text-[20px]">+ Ekle</p>
             </div>
 
-            <div class="mt-[25px] mb-[25px] h-screen px-[15px] py-[15px]">
+            <div class="mt-[45px] mb-[25px] h-screen px-[15px] py-[15px]">
                 <div class="w-full h-screen">
                     <div v-for="dataArrays in myData.dataArrays" class="mb-[25px]">
                         <div class="text-center bg-gray-400 py-[5px] flex justify-between px-[10px]">
@@ -14,7 +14,7 @@
                             <div>Ön İzleme</div>
                         </div>
 
-                        <div class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
+                        <div v-if="dataArrays.data1.imageSrc !== null" class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
                             <div>{{ dataArrays.data1.inputDes }}</div>
                             <div class="flex items-center justify-center">
                                 <div>{{ dataArrays.data1.countItem }}</div>
@@ -25,7 +25,7 @@
                             </div>
                         </div>
 
-                        <div class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
+                        <div v-if="dataArrays.data2.imageSrc !== null" class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
                             <div>{{ dataArrays.data2.inputDes }}</div>
                             <div class="flex items-center justify-center">
                                 <div>{{ dataArrays.data2.countItem }}</div>
@@ -36,7 +36,7 @@
                             </div>
                         </div>
 
-                        <div class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
+                        <div v-if="dataArrays.data3.imageSrc !== null" class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
                             <div>{{ dataArrays.data3.inputDes }}</div>
                             <div class="flex items-center justify-center">
                                 <div>{{ dataArrays.data3.countItem }}</div>
@@ -47,7 +47,7 @@
                             </div>
                         </div>
 
-                        <div class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
+                        <div v-if="dataArrays.data4.imageSrc !== null" class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
                             <div>{{ dataArrays.data4.inputDes }}</div>
                             <div class="flex items-center justify-center">
                                 <div>{{ dataArrays.data4.countItem }}</div>
@@ -58,7 +58,7 @@
                             </div>
                         </div>
 
-                        <div class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
+                        <div v-if="dataArrays.data5.imageSrc !== null" class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
                             <div>{{ dataArrays.data5.inputDes }}</div>
                             <div class="flex items-center justify-center">
                                 <div>{{ dataArrays.data5.countItem }}</div>
@@ -69,7 +69,7 @@
                             </div>
                         </div>
 
-                        <div class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
+                        <div v-if="dataArrays.data6.imageSrc !== null" class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
                             <div>{{ dataArrays.data6.inputDes }}</div>
                             <div class="flex items-center justify-center">
                                 <div>{{ dataArrays.data6.countItem }}</div>
@@ -90,7 +90,7 @@
 </template>
 
 <script setup>
-import { reactive, onMounted } from 'vue';
+import { reactive, onMounted, ref } from 'vue';
 import axios from "axios";
 import watchList from "../components/watchList.vue";
 import router from "../router/router";
