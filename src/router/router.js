@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
-const routes = [
+/* const routes = [
     {
         name: "Home",
         path: "/",
@@ -16,7 +16,20 @@ const routes = [
         path: "/watchFrom",
         component: () => import('../view/watchFrom.vue')
     },
-];
+]; */
+
+const routes = [
+    {
+        name: "newHome",
+        path: "/",
+        component: () => import('../layouts/defaultLayout.vue'),
+    },
+    {
+        name: "listAdd",
+        path: "/listAdd",
+        component: () => import("../layouts/listAdd.vue"),
+    },
+]
 
 const router = createRouter({
     history: createWebHashHistory(),
