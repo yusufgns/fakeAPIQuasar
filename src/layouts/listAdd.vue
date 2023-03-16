@@ -375,7 +375,6 @@
 </style>
 
 <script setup>
-import watchList from '../components/watchList.vue';
 import router from '../router/router';
 import { ref, reactive, onMounted } from 'vue'
 import axios from 'axios';
@@ -388,7 +387,6 @@ const showData3 = ref(false)
 const showData4 = ref(false)
 const showData5 = ref(false)
 const showData6 = ref(false)
-const showPushData = ref(false)
 
 const showInput = () => {
     if (fullData.data1.imageSrc == null) {

@@ -278,7 +278,6 @@
 <script setup>
 import { reactive, onMounted, ref, watch } from 'vue';
 import axios from "axios";
-import watchList from "../components/watchList.vue";
 import router from "../router/router";
 
 const myData = reactive({
