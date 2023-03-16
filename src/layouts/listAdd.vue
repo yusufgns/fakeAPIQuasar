@@ -44,10 +44,17 @@
                                     val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
                                 ]" />
 
-                            <label>
+                            <label @click="ınputDesNon('data1')" v-if="desFalse == false">
                                 <q-checkbox v-model="desFalse" />
                                 Açıklama Girmek istemiyorum
                             </label>
+
+                            <label @click="desFalse == !desFalse" v-if="desFalse">
+                                <q-checkbox v-model="desFalse" />
+                                Açıklama Girmek İstiyorum
+                            </label>
+
+
 
                             <q-input v-model="compData.data1.inputCount" filled type="number"
                                 label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
@@ -88,9 +95,14 @@
                                     val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
                                 ]" />
 
-                            <label>
+                            <label @click="ınputDesNon('data2')" v-if="desFalse == false">
                                 <q-checkbox v-model="desFalse" />
                                 Açıklama Girmek istemiyorum
+                            </label>
+
+                            <label v-if="desFalse">
+                                <q-checkbox v-model="desFalse" />
+                                Açıklama Girmek İstiyorum
                             </label>
 
                             <q-input v-model="compData.data2.inputCount" filled type="number"
@@ -132,9 +144,14 @@
                                     val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
                                 ]" />
 
-                            <label>
+                            <label @click="ınputDesNon('data3')" v-if="desFalse == false">
                                 <q-checkbox v-model="desFalse" />
                                 Açıklama Girmek istemiyorum
+                            </label>
+
+                            <label v-if="desFalse">
+                                <q-checkbox v-model="desFalse" />
+                                Açıklama Girmek İstiyorum
                             </label>
 
                             <q-input v-model="compData.data3.inputCount" filled type="number"
@@ -175,9 +192,14 @@
                                     val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
                                 ]" />
 
-                            <label>
+                            <label @click="ınputDesNon('data4')" v-if="desFalse == false">
                                 <q-checkbox v-model="desFalse" />
                                 Açıklama Girmek istemiyorum
+                            </label>
+
+                            <label v-if="desFalse">
+                                <q-checkbox v-model="desFalse" />
+                                Açıklama Girmek İstiyorum
                             </label>
 
                             <q-input v-model="compData.data4.inputCount" filled type="number"
@@ -218,9 +240,14 @@
                                     val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
                                 ]" />
 
-                            <label>
+                            <label @click="ınputDesNon('data5')" v-if="desFalse == false">
                                 <q-checkbox v-model="desFalse" />
                                 Açıklama Girmek istemiyorum
+                            </label>
+
+                            <label v-if="desFalse">
+                                <q-checkbox v-model="desFalse" />
+                                Açıklama Girmek İstiyorum
                             </label>
 
                             <q-input v-model="compData.data5.inputCount" filled type="number"
@@ -261,9 +288,14 @@
                                     val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
                                 ]" />
 
-                            <label>
+                            <label @click="ınputDesNon('data6')" v-if="desFalse == false">
                                 <q-checkbox v-model="desFalse" />
                                 Açıklama Girmek istemiyorum
+                            </label>
+
+                            <label v-if="desFalse">
+                                <q-checkbox v-model="desFalse" />
+                                Açıklama Girmek İstiyorum
                             </label>
 
                             <q-input v-model="compData.data6.inputCount" filled type="number"
@@ -302,11 +334,6 @@
                                 label="Lütfen açıklama giriniz" lazy-rules :rules="[
                                     val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
                                 ]" />
-
-                            <label>
-                                <q-checkbox v-model="desFalse" />
-                                Açıklama Girmek istemiyorum
-                            </label>
 
                             <q-input v-model="onDeleteData.inputCount" filled type="number"
                                 label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
@@ -433,15 +460,26 @@ import router from '../router/router';
 import { ref, reactive, onMounted } from 'vue'
 import axios from 'axios';
 
-const desFalse = ref(false)
-
+const fileName = ref("")
+const errorTitle = ref(false)
+const deleteDataKey = ref("")
 const showData1 = ref(true)
+const desFalse = ref(false)
 const showData2 = ref(false)
 const showData3 = ref(false)
 const showData4 = ref(false)
 const showData5 = ref(false)
 const showData6 = ref(false)
 const deleteData = ref(false)
+
+const desdeneme = ref(false)
+
+const ınputDesNon = (dataKey) => {
+    console.log(dataKey)
+    compData[dataKey].inputDes = null
+    fullData[dataKey].inputDes = null
+    onDeleteData[dataKey].inputDes = null
+}
 
 const showInput = () => {
     if (fullData.data1.imageSrc == null) {
@@ -476,13 +514,11 @@ const onDeleteData = reactive({
     }
 })
 
-const deleteDataKey = ref("")
-
 const onSubmit2 = (e, dataKey) => {
-    console.log(e)
     fullData[dataKey].inputCount = e.inputCount
     fullData[dataKey].inputDes = e.inputDes
     fullData[dataKey].imageSrc = e.imageSrc
+
     deleteData.value = false
 }
 
@@ -494,6 +530,8 @@ const onDelete = (e, dataKey) => {
     onDeleteData.imageSrc = e.imageSrc
     onDeleteData.inputDes = e.inputDes
     onDeleteData.inputCount = e.inputCount
+
+    desFalse.value = false
 
     fullData[dataKey].inputCount = null
     fullData[dataKey].imageSrc = null
@@ -551,10 +589,6 @@ const goToList = () => {
     router.push("/")
 }
 
-const fileName = ref("")
-const errorTitle = ref(false)
-
-
 const compData = reactive({
     inputTitle: null,
     data1: {
@@ -607,6 +641,7 @@ const onSubmit = async (e, dataKey) => {
         fullData[dataKey].inputCount = compData[dataKey].inputCount;
         fullData[dataKey].imageSrc = compData[dataKey].imageSrc;
         fullData.inputTitle = compData.inputTitle
+        desFalse.value = false
 
         compData[dataKey].imageSrc = null
         compData[dataKey].inputCount = null
