@@ -380,7 +380,7 @@ import router from '../router/router';
 import { ref, reactive, onMounted } from 'vue'
 import axios from 'axios';
 
-const val = ref(true)
+const val = ref(false)
 
 const showData1 = ref(true)
 const showData2 = ref(false)
