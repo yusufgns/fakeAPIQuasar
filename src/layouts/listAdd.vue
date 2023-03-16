@@ -7,6 +7,11 @@
 
             <div class="pt-[45px] w-full h-[100vh] flex justify-center">
                 <div>
+                    <div class="text-center mt-[20px] h-[20px] mb-[10px] py-[2px] font-bold">
+                        <div v-if="errorTitle" class=" bg-red-300">
+                            Lütfen Başlık Giriniz!!
+                        </div>
+                    </div>
                     <div class="q-gutter-y-md column" style="max-width: 300px">
 
                         <div class="h-[56px]">
@@ -19,7 +24,7 @@
                         <!--Data1-->
                         <q-form v-if="fullData.data1.imageSrc == null" @reset="onReset(e, 'data1')"
                             class="q-gutter-md flex flex-col">
-                            Liste 1/6
+                            Liste'ye Eklenenler 0/6
                             <div>
                                 <label class=" mt-[50px]">
                                     <div class="itemIMG relative">
@@ -62,7 +67,7 @@
 
                         <!--Data2-->
                         <q-form v-if="showData2" @reset="onReset(e, 'data2')" class="q-gutter-md flex flex-col">
-                            Liste 2/6
+                            Liste'ye Eklenenler 1/6
                             <div>
                                 <label class=" mt-[50px]">
                                     <div class="itemIMG relative">
@@ -104,7 +109,7 @@
 
                         <!--Data3-->
                         <q-form v-if="showData3" @reset="onReset(e, 'data3')" class="q-gutter-md flex flex-col">
-                            Liste 3/6
+                            Liste'ye Eklenenler 2/6
                             <div>
                                 <label class=" mt-[50px]">
                                     <div class="itemIMG relative">
@@ -146,7 +151,7 @@
 
                         <!--Data4-->
                         <q-form v-if="showData4" @reset="onReset(e, 'data4')" class="q-gutter-md flex flex-col">
-                            Liste 4/6
+                            Liste'ye Eklenenler 3/6
                             <div>
                                 <label class=" mt-[50px]">
                                     <div class="itemIMG relative">
@@ -188,7 +193,7 @@
 
                         <!--Data5-->
                         <q-form v-if="showData5" @reset="onReset(e, 'data5')" class="q-gutter-md flex flex-col">
-                            Liste 5/6
+                            Liste'ye Eklenenler 4/6
                             <div>
                                 <label class=" mt-[50px]">
                                     <div class="itemIMG relative">
@@ -230,7 +235,7 @@
 
                         <!--Data6-->
                         <q-form v-if="showData6" @reset="onReset(e, 'data6')" class="q-gutter-md flex flex-col">
-                            Liste 6/6
+                            Liste'ye Eklenenler 5/6
                             <div>
                                 <label class=" mt-[50px]">
                                     <div class="itemIMG relative">
@@ -271,32 +276,86 @@
                         </q-form>
                     </div>
                 </div>
-
-                <div class="flex absolute gap-3 bottom-8 justify-center flex-col">
-                    <div class="flex gap-3">
-                        <img class="w-[110px] h-[70px] max-w-[110px] max-h-[70px]" :src="fullData.data6.imageSrc"
-                            v-if="fullData.data6.imageSrc">
-                        <img class="w-[110px] h-[70px] max-w-[110px] max-h-[70px]" :src="fullData.data5.imageSrc"
-                            v-if="fullData.data5.imageSrc">
-                        <img class="w-[110px] h-[70px] max-w-[110px] max-h-[70px]" :src="fullData.data4.imageSrc"
-                            v-if="fullData.data4.imageSrc">
-                    </div>
-
-                    <div class="flex gap-3">
-                        <img class="w-[110px] h-[70px] max-w-[110px] max-h-[70px]" :src="fullData.data3.imageSrc"
-                            v-if="fullData.data3.imageSrc">
-                        <img class="w-[110px] h-[70px] max-w-[110px] max-h-[70px]" :src="fullData.data2.imageSrc"
-                            v-if="fullData.data2.imageSrc">
-                        <img class="w-[110px] h-[70px] max-w-[110px] max-h-[70px]" :src="fullData.data1.imageSrc"
-                            v-if="fullData.data1.imageSrc">
-                    </div>
-                </div>
             </div>
 
 
         </div>
-        <div class="w-[60%] h-full fixed right-0 bg-red-400">
-            asdasddas
+        <div class="w-[60%] h-full fixed right-0 bg-gray-300">
+            <div class="flex w-full absolute gap-3 top-[50px] px-[30px] justify-center flex-col">
+                <div v-if="fullData.inputTitle !== null"
+                    class="text-center bg-gray-400 py-[5px] flex justify-between px-[10px]">
+                    <div>Sil</div>
+                    {{ fullData.inputTitle }}
+                    <div>Ön İzleme</div>
+                </div>
+
+                <div v-if="fullData.data1.imageSrc !== null"
+                    class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
+                    <div>{{ fullData.data1.inputDes }}</div>
+                    <div class="flex items-center justify-center">
+                        <div>{{ fullData.data1.inputCount }}</div>
+                        <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
+                            <img class="w-[120px] max-w-[120px] h-[80px] max-h-[80px]" :src="fullData.data1.imageSrc">
+                        </div>
+                    </div>
+                    <!--q-btn @click="onReset2(e, 'data1')" label="reset" type="reset" color="primary" flat class="q-ml-sm" />-->
+                </div>
+
+                <div v-if="fullData.data2.imageSrc !== null"
+                    class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
+                    <div>{{ compData.data2.inputDes }}</div>
+                    <div class="flex items-center justify-center">
+                        <div>{{ compData.data2.inputCount }}</div>
+                        <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
+                            <img class="w-[120px] max-w-[120px] h-[80px] max-h-[80px]" :src="fullData.data2.imageSrc">
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="fullData.data3.imageSrc !== null"
+                    class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
+                    <div>{{ compData.data3.inputDes }}</div>
+                    <div class="flex items-center justify-center">
+                        <div>{{ compData.data3.inputCount }}</div>
+                        <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
+                            <img class="w-[120px] max-w-[120px] h-[80px] max-h-[80px]" :src="fullData.data3.imageSrc">
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="fullData.data4.imageSrc !== null"
+                    class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
+                    <div>{{ compData.data4.inputDes }}</div>
+                    <div class="flex items-center justify-center">
+                        <div>{{ compData.data4.inputCount }}</div>
+                        <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
+                            <img class="w-[120px] max-w-[120px] h-[80px] max-h-[80px]" :src="fullData.data4.imageSrc">
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="fullData.data5.imageSrc !== null"
+                    class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
+                    <div>{{ compData.data5.inputDes }}</div>
+                    <div class="flex items-center justify-center">
+                        <div>{{ compData.data5.inputCount }}</div>
+                        <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
+                            <img class="w-[120px] max-w-[120px] h-[80px] max-h-[80px]" :src="fullData.data5.imageSrc">
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="fullData.data6.imageSrc !== null"
+                    class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
+                    <div>{{ compData.data6.inputDes }}</div>
+                    <div class="flex items-center justify-center">
+                        <div>{{ fullDcompDataata.data6.inputCount }}</div>
+                        <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
+                            <img class="w-[120px] max-w-[120px] h-[80px] max-h-[80px]" :src="fullData.data6.imageSrc">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -408,6 +467,8 @@ const goToList = () => {
 }
 
 const fileName = ref("")
+const errorTitle = ref(false)
+
 
 const compData = reactive({
     inputTitle: null,
@@ -454,21 +515,32 @@ const showImage = (event, dataKey) => {
 }
 
 const onSubmit = async (e, dataKey) => {
-    fullData[dataKey].inputDes = compData[dataKey].inputDes;
-    fullData[dataKey].inputCount = compData[dataKey].inputCount;
-    fullData[dataKey].imageSrc = compData[dataKey].imageSrc;
-    fullData.inputTitle = compData.inputTitle
+    if (compData.inputTitle == null) {
+        errorTitle.value = true
+    } else {
+        fullData[dataKey].inputDes = compData[dataKey].inputDes;
+        fullData[dataKey].inputCount = compData[dataKey].inputCount;
+        fullData[dataKey].imageSrc = compData[dataKey].imageSrc;
+        fullData.inputTitle = compData.inputTitle
 
-    compData[dataKey].imageSrc = null
-    compData[dataKey].inputCount = null
-    compData[dataKey].inputDes = null
-    fileName.value = ""
+        compData[dataKey].imageSrc = null
+        compData[dataKey].inputCount = null
+        compData[dataKey].inputDes = null
+        fileName.value = ""
+    }
 }
 
-const onReset = (e, dataKey) => {
+const onReset2 = (e, dataKey) => {
     fullData[dataKey].inputCount = null
     fullData[dataKey].inputDes = null
     fullData[dataKey].imageSrc = null
     fileName.value = ""
+}
+
+const onReset = (e, dataKey) => {
+    compData[dataKey].inputCount = null
+    compData[dataKey].inputDes = null
+    compData[dataKey].imageSrc = null
+    compData.value = ""
 }
 </script>

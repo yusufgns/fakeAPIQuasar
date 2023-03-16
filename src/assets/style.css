@@ -24,10 +24,6 @@
         @apply border-[5px] border-black border-r-[3px]
     }
 
-    .watchIMG {
-        @apply bg-gray-50 w-[380px] h-[280px]
-    }
-
     .watchWfull {
         @apply w-full h-[20px] bg-gray-500
     }
