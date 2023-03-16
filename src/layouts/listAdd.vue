@@ -22,7 +22,7 @@
                         </div>
 
                         <!--Data1-->
-                        <q-form v-if="fullData.data1.imageSrc == null" @reset="onReset(e, 'data1')"
+                        <q-form v-if="fullData.data1.imageSrc == null && !deleteData" @reset="onReset(e, 'data1')"
                             class="q-gutter-md flex flex-col">
                             Liste'ye Eklenenler 0/6
                             <div>
@@ -39,13 +39,13 @@
                                 </label>
                             </div>
 
-                            <q-input v-if="!val" filled type="textarea" v-model="compData.data1.inputDes" :max-length="5"
-                                label="Lütfen açıklama giriniz" lazy-rules :rules="[
+                            <q-input v-if="!desFalse" filled type="textarea" v-model="compData.data1.inputDes"
+                                :max-length="5" label="Lütfen açıklama giriniz" lazy-rules :rules="[
                                     val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
                                 ]" />
 
                             <label>
-                                <q-checkbox v-model="val" />
+                                <q-checkbox v-model="desFalse" />
                                 Açıklama Girmek istemiyorum
                             </label>
 
@@ -66,7 +66,8 @@
                         </q-form>
 
                         <!--Data2-->
-                        <q-form v-if="showData2" @reset="onReset(e, 'data2')" class="q-gutter-md flex flex-col">
+                        <q-form v-if="showData2 && !deleteData" @reset="onReset(e, 'data2')"
+                            class="q-gutter-md flex flex-col">
                             Liste'ye Eklenenler 1/6
                             <div>
                                 <label class=" mt-[50px]">
@@ -82,13 +83,13 @@
                                 </label>
                             </div>
 
-                            <q-input v-if="!val" filled type="textarea" v-model="compData.data2.inputDes" :max-length="5"
-                                label="Lütfen açıklama giriniz" lazy-rules :rules="[
+                            <q-input v-if="!desFalse" filled type="textarea" v-model="compData.data2.inputDes"
+                                :max-length="5" label="Lütfen açıklama giriniz" lazy-rules :rules="[
                                     val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
                                 ]" />
 
                             <label>
-                                <q-checkbox v-model="val" />
+                                <q-checkbox v-model="desFalse" />
                                 Açıklama Girmek istemiyorum
                             </label>
 
@@ -97,6 +98,7 @@
                                     val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
                                 ]" />
                             <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
+
                             <p @click="onSubmit(e, 'data2'); showInput();"
                                 class="bg-blue-300 text-center py-[10px] px-[10px] rounded-[5px]">Sepete Ekle</p>
                             <div class="bg-blue-100 text-center py-[10px] px-[10px] rounded-[5px]">
@@ -108,7 +110,8 @@
                         </q-form>
 
                         <!--Data3-->
-                        <q-form v-if="showData3" @reset="onReset(e, 'data3')" class="q-gutter-md flex flex-col">
+                        <q-form v-if="showData3 && !deleteData" @reset="onReset(e, 'data3')"
+                            class="q-gutter-md flex flex-col">
                             Liste'ye Eklenenler 2/6
                             <div>
                                 <label class=" mt-[50px]">
@@ -124,13 +127,13 @@
                                 </label>
                             </div>
 
-                            <q-input v-if="!val" filled type="textarea" v-model="compData.data3.inputDes" :max-length="5"
-                                label="Lütfen açıklama giriniz" lazy-rules :rules="[
+                            <q-input v-if="!desFalse" filled type="textarea" v-model="compData.data3.inputDes"
+                                :max-length="5" label="Lütfen açıklama giriniz" lazy-rules :rules="[
                                     val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
                                 ]" />
 
                             <label>
-                                <q-checkbox v-model="val" />
+                                <q-checkbox v-model="desFalse" />
                                 Açıklama Girmek istemiyorum
                             </label>
 
@@ -150,7 +153,8 @@
                         </q-form>
 
                         <!--Data4-->
-                        <q-form v-if="showData4" @reset="onReset(e, 'data4')" class="q-gutter-md flex flex-col">
+                        <q-form v-if="showData4 && !deleteData" @reset="onReset(e, 'data4')"
+                            class="q-gutter-md flex flex-col">
                             Liste'ye Eklenenler 3/6
                             <div>
                                 <label class=" mt-[50px]">
@@ -166,13 +170,13 @@
                                 </label>
                             </div>
 
-                            <q-input v-if="!val" filled type="textarea" v-model="compData.data4.inputDes" :max-length="5"
-                                label="Lütfen açıklama giriniz" lazy-rules :rules="[
+                            <q-input v-if="!desFalse" filled type="textarea" v-model="compData.data4.inputDes"
+                                :max-length="5" label="Lütfen açıklama giriniz" lazy-rules :rules="[
                                     val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
                                 ]" />
 
                             <label>
-                                <q-checkbox v-model="val" />
+                                <q-checkbox v-model="desFalse" />
                                 Açıklama Girmek istemiyorum
                             </label>
 
@@ -192,7 +196,8 @@
                         </q-form>
 
                         <!--Data5-->
-                        <q-form v-if="showData5" @reset="onReset(e, 'data5')" class="q-gutter-md flex flex-col">
+                        <q-form v-if="showData5 && !deleteData" @reset="onReset(e, 'data5')"
+                            class="q-gutter-md flex flex-col">
                             Liste'ye Eklenenler 4/6
                             <div>
                                 <label class=" mt-[50px]">
@@ -208,13 +213,13 @@
                                 </label>
                             </div>
 
-                            <q-input v-if="!val" filled type="textarea" v-model="compData.data5.inputDes" :max-length="5"
-                                label="Lütfen açıklama giriniz" lazy-rules :rules="[
+                            <q-input v-if="!desFalse" filled type="textarea" v-model="compData.data5.inputDes"
+                                :max-length="5" label="Lütfen açıklama giriniz" lazy-rules :rules="[
                                     val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
                                 ]" />
 
                             <label>
-                                <q-checkbox v-model="val" />
+                                <q-checkbox v-model="desFalse" />
                                 Açıklama Girmek istemiyorum
                             </label>
 
@@ -234,7 +239,8 @@
                         </q-form>
 
                         <!--Data6-->
-                        <q-form v-if="showData6" @reset="onReset(e, 'data6')" class="q-gutter-md flex flex-col">
+                        <q-form v-if="showData6 && !deleteData" @reset="onReset(e, 'data6')"
+                            class="q-gutter-md flex flex-col">
                             Liste'ye Eklenenler 5/6
                             <div>
                                 <label class=" mt-[50px]">
@@ -250,13 +256,13 @@
                                 </label>
                             </div>
 
-                            <q-input v-if="!val" filled type="textarea" v-model="compData.data6.inputDes" :max-length="5"
-                                label="Lütfen açıklama giriniz" lazy-rules :rules="[
+                            <q-input v-if="!desFalse" filled type="textarea" v-model="compData.data6.inputDes"
+                                :max-length="5" label="Lütfen açıklama giriniz" lazy-rules :rules="[
                                     val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
                                 ]" />
 
                             <label>
-                                <q-checkbox v-model="val" />
+                                <q-checkbox v-model="desFalse" />
                                 Açıklama Girmek istemiyorum
                             </label>
 
@@ -266,6 +272,48 @@
                                 ]" />
                             <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
                             <p @click="onSubmit(e, 'data6'); showInput();"
+                                class="bg-blue-300 text-center py-[10px] px-[10px] rounded-[5px]">Sepete Ekle</p>
+                            <div class="bg-blue-100 text-center py-[10px] px-[10px] rounded-[5px]">
+                                <div @click="pushFetchData()">
+                                    Eklenenleri
+                                    Gönder
+                                </div>
+                            </div>
+                        </q-form>
+
+                        <!--Düzenlenen Data-->
+                        <q-form v-if="deleteData" @reset="onReset(e, 'onDelete')" class="q-gutter-md flex flex-col">
+                            {{ deleteDataKey }}
+                            <div>
+                                <label class=" mt-[50px]">
+                                    <div class="itemIMG relative">
+                                        <img class="w-[300px] h-[200px]" :src="onDeleteData.imageSrc"
+                                            v-if="onDeleteData.imageSrc" />
+                                        <p class="top-[84px] left-[90px] absolute">
+                                        <p v-if="!fileName" class="font-bold text-[22px]">Dosya Seç</p>
+                                        </p>
+                                    </div>
+                                    <p class="absolute">{{ fileName }}</p>
+                                    <input class="mt-[15px] inputFile" type="file" @change="e => showImage(e, 'onDelete')">
+                                </label>
+                            </div>
+
+                            <q-input v-if="!desFalse" filled type="textarea" v-model="onDeleteData.inputDes" :max-length="5"
+                                label="Lütfen açıklama giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen açıklama giriniz'
+                                ]" />
+
+                            <label>
+                                <q-checkbox v-model="desFalse" />
+                                Açıklama Girmek istemiyorum
+                            </label>
+
+                            <q-input v-model="onDeleteData.inputCount" filled type="number"
+                                label="Lütfen Parça Sayısını Giriniz" lazy-rules :rules="[
+                                    val => val !== null && val !== '' || 'Lütfen Parça Sayısını Giriniz'
+                                ]" />
+                            <q-btn label="reset" type="reset" color="primary" flat class="q-ml-sm" />
+                            <p @click="onSubmit2(onDeleteData, deleteDataKey); showInput();"
                                 class="bg-blue-300 text-center py-[10px] px-[10px] rounded-[5px]">Sepete Ekle</p>
                             <div class="bg-blue-100 text-center py-[10px] px-[10px] rounded-[5px]">
                                 <div @click="pushFetchData()">
@@ -291,6 +339,7 @@
 
                 <div v-if="fullData.data1.imageSrc !== null"
                     class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
+                    <div @click="onDelete(fullData.data1, 'data1')">Düzenle</div>
                     <div>{{ fullData.data1.inputDes }}</div>
                     <div class="flex items-center justify-center">
                         <div>{{ fullData.data1.inputCount }}</div>
@@ -303,9 +352,10 @@
 
                 <div v-if="fullData.data2.imageSrc !== null"
                     class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
-                    <div>{{ compData.data2.inputDes }}</div>
+                    <div @click="onDelete(fullData.data2, 'data2')">Düzenle</div>
+                    <div>{{ fullData.data2.inputDes }}</div>
                     <div class="flex items-center justify-center">
-                        <div>{{ compData.data2.inputCount }}</div>
+                        <div>{{ fullData.data2.inputCount }}</div>
                         <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
                             <img class="w-[120px] max-w-[120px] h-[80px] max-h-[80px]" :src="fullData.data2.imageSrc">
                         </div>
@@ -314,9 +364,10 @@
 
                 <div v-if="fullData.data3.imageSrc !== null"
                     class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
-                    <div>{{ compData.data3.inputDes }}</div>
+                    <div @click="onDelete(fullData.data3, 'data3')">Düzenle</div>
+                    <div>{{ fullData.data3.inputDes }}</div>
                     <div class="flex items-center justify-center">
-                        <div>{{ compData.data3.inputCount }}</div>
+                        <div>{{ fullData.data3.inputCount }}</div>
                         <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
                             <img class="w-[120px] max-w-[120px] h-[80px] max-h-[80px]" :src="fullData.data3.imageSrc">
                         </div>
@@ -325,9 +376,10 @@
 
                 <div v-if="fullData.data4.imageSrc !== null"
                     class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
-                    <div>{{ compData.data4.inputDes }}</div>
+                    <div @click="onDelete(fullData.data4, 'data4')">Düzenle</div>
+                    <div>{{ fullData.data4.inputDes }}</div>
                     <div class="flex items-center justify-center">
-                        <div>{{ compData.data4.inputCount }}</div>
+                        <div>{{ fullData.data4.inputCount }}</div>
                         <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
                             <img class="w-[120px] max-w-[120px] h-[80px] max-h-[80px]" :src="fullData.data4.imageSrc">
                         </div>
@@ -336,9 +388,10 @@
 
                 <div v-if="fullData.data5.imageSrc !== null"
                     class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
-                    <div>{{ compData.data5.inputDes }}</div>
+                    <div @click="onDelete(fullData.data5, 'data5')">Düzenle</div>
+                    <div>{{ fullData.data5.inputDes }}</div>
                     <div class="flex items-center justify-center">
-                        <div>{{ compData.data5.inputCount }}</div>
+                        <div>{{ fullData.data5.inputCount }}</div>
                         <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
                             <img class="w-[120px] max-w-[120px] h-[80px] max-h-[80px]" :src="fullData.data5.imageSrc">
                         </div>
@@ -347,9 +400,10 @@
 
                 <div v-if="fullData.data6.imageSrc !== null"
                     class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
-                    <div>{{ compData.data6.inputDes }}</div>
+                    <div @click="onDelete(fullData.data6, 'data6')">Düzenle</div>
+                    <div>{{ fullData.data6.inputDes }}</div>
                     <div class="flex items-center justify-center">
-                        <div>{{ fullDcompDataata.data6.inputCount }}</div>
+                        <div>{{ fullData.data6.inputCount }}</div>
                         <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
                             <img class="w-[120px] max-w-[120px] h-[80px] max-h-[80px]" :src="fullData.data6.imageSrc">
                         </div>
@@ -379,7 +433,7 @@ import router from '../router/router';
 import { ref, reactive, onMounted } from 'vue'
 import axios from 'axios';
 
-const val = ref(false)
+const desFalse = ref(false)
 
 const showData1 = ref(true)
 const showData2 = ref(false)
@@ -387,6 +441,7 @@ const showData3 = ref(false)
 const showData4 = ref(false)
 const showData5 = ref(false)
 const showData6 = ref(false)
+const deleteData = ref(false)
 
 const showInput = () => {
     if (fullData.data1.imageSrc == null) {
@@ -409,8 +464,40 @@ const showInput = () => {
             showData6.value = true
     } else if (fullData.data6.imageSrc !== null) {
         showData6.value = false,
-            pushFetchData();
+            deleteData.value = true
     }
+}
+
+const onDeleteData = reactive({
+    data: {
+        imageSrc: "",
+        inputDes: "",
+        inputCount: "",
+    }
+})
+
+const deleteDataKey = ref("")
+
+const onSubmit2 = (e, dataKey) => {
+    console.log(e)
+    fullData[dataKey].inputCount = e.inputCount
+    fullData[dataKey].inputDes = e.inputDes
+    fullData[dataKey].imageSrc = e.imageSrc
+    deleteData.value = false
+}
+
+const onDelete = (e, dataKey) => {
+    deleteDataKey.value = dataKey
+    deleteData.value = true
+    console.log(e)
+    console.log(dataKey)
+    onDeleteData.imageSrc = e.imageSrc
+    onDeleteData.inputDes = e.inputDes
+    onDeleteData.inputCount = e.inputCount
+
+    fullData[dataKey].inputCount = null
+    fullData[dataKey].imageSrc = null
+    fullData[dataKey].inputDes = null
 }
 
 const fullData = reactive({
