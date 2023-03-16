@@ -1,8 +1,8 @@
 <template>
     <div class="flex">
         <div class="w-[40%] break-words relative ">
-            <div class="bg-gray-100 h-[40px] flex fixed w-[40%] items-center justify-center z-[999]">
-                <p @click="goToList" class="bg-gray-300 py-[1px] px-[10px] rounded-[10px] text-[20px]">Liste</p>
+            <div class="bg-white h-[80px] flex fixed w-[40%] items-center justify-center z-[999]">
+                <p @click="goToList" class="bg-gray-300 py-[1px] px-[10px] rounded-[10px] text-[20px]">Listelere Git</p>
             </div>
 
             <div class="pt-[45px] w-full h-[100vh] flex justify-center">
@@ -280,7 +280,7 @@
 
 
         </div>
-        <div class="w-[60%] h-full fixed right-0 bg-gray-300">
+        <div class="w-[60%] h-full fixed right-0 bg-blue-50">
             <div class="flex w-full absolute gap-3 top-[50px] px-[30px] justify-center flex-col">
                 <div v-if="fullData.inputTitle !== null"
                     class="text-center bg-gray-400 py-[5px] flex justify-between px-[10px]">
