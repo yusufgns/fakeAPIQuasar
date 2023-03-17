@@ -359,15 +359,17 @@
             <div class="flex w-full absolute gap-3 top-[50px] px-[30px] justify-center flex-col">
                 <div v-if="fullData.inputTitle !== null"
                     class="text-center bg-gray-400 py-[5px] flex justify-between px-[10px]">
-                    <div>Sil</div>
+                    <p></p>
                     {{ fullData.inputTitle }}
-                    <div>Ön İzleme</div>
+                    <p></p>
                 </div>
 
                 <div v-if="fullData.data1.imageSrc !== null"
                     class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
-                    <div @click="onDelete(fullData.data1, 'data1')">Düzenle</div>
-                    <div>{{ fullData.data1.inputDes }}</div>
+                    <div>
+                        <div @click="onDelete(fullData.data1, 'data1')">Düzenle</div>
+                        <div>{{ fullData.data1.inputDes }}</div>
+                    </div>
                     <div class="flex items-center justify-center">
                         <div>{{ fullData.data1.inputCount }}</div>
                         <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
@@ -379,8 +381,10 @@
 
                 <div v-if="fullData.data2.imageSrc !== null"
                     class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
-                    <div @click="onDelete(fullData.data2, 'data2')">Düzenle</div>
-                    <div>{{ fullData.data2.inputDes }}</div>
+                    <div>
+                        <div @click="onDelete(fullData.data2, 'data2')">Düzenle</div>
+                        <div>{{ fullData.data2.inputDes }}</div>
+                    </div>
                     <div class="flex items-center justify-center">
                         <div>{{ fullData.data2.inputCount }}</div>
                         <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
@@ -391,8 +395,10 @@
 
                 <div v-if="fullData.data3.imageSrc !== null"
                     class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
-                    <div @click="onDelete(fullData.data3, 'data3')">Düzenle</div>
-                    <div>{{ fullData.data3.inputDes }}</div>
+                    <div>
+                        <div @click="onDelete(fullData.data3, 'data3')">Düzenle</div>
+                        <div>{{ fullData.data3.inputDes }}</div>
+                    </div>
                     <div class="flex items-center justify-center">
                         <div>{{ fullData.data3.inputCount }}</div>
                         <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
@@ -403,8 +409,10 @@
 
                 <div v-if="fullData.data4.imageSrc !== null"
                     class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
-                    <div @click="onDelete(fullData.data4, 'data4')">Düzenle</div>
-                    <div>{{ fullData.data4.inputDes }}</div>
+                    <div>
+                        <div @click="onDelete(fullData.data4, 'data4')">Düzenle</div>
+                        <div>{{ fullData.data4.inputDes }}</div>
+                    </div>
                     <div class="flex items-center justify-center">
                         <div>{{ fullData.data4.inputCount }}</div>
                         <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
@@ -415,8 +423,10 @@
 
                 <div v-if="fullData.data5.imageSrc !== null"
                     class="flex justify-between items-center py-[5px] px-[10px] bg-gray-300">
-                    <div @click="onDelete(fullData.data5, 'data5')">Düzenle</div>
-                    <div>{{ fullData.data5.inputDes }}</div>
+                    <div>
+                        <div @click="onDelete(fullData.data5, 'data5')">Düzenle</div>
+                        <div>{{ fullData.data5.inputDes }}</div>
+                    </div>
                     <div class="flex items-center justify-center">
                         <div>{{ fullData.data5.inputCount }}</div>
                         <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
@@ -427,8 +437,10 @@
 
                 <div v-if="fullData.data6.imageSrc !== null"
                     class="flex justify-between items-center py-[5px] px-[10px] bg-gray-200">
-                    <div @click="onDelete(fullData.data6, 'data6')">Düzenle</div>
-                    <div>{{ fullData.data6.inputDes }}</div>
+                    <div>
+                        <div @click="onDelete(fullData.data6, 'data6')">Düzenle</div>
+                        <div>{{ fullData.data6.inputDes }}</div>
+                    </div>
                     <div class="flex items-center justify-center">
                         <div>{{ fullData.data6.inputCount }}</div>
                         <div class="w-[120px] max-w-[120px] h-[80px] max-h-[80px] ml-[20px]">
